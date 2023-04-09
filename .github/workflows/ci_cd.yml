@@ -1,14 +1,15 @@
-name: Release
+name: Continuous Integration & Delivery
 
 on:
-  release: 
-    types: [published]
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs: 
   ci:
-    name: Continuous Integration 
-    uses: ./.github/workflows/ci.yml
+    name: build & test
+    uses: ./.github/workflows/build_test.yml
   release:
     name: release
     needs: ci
@@ -34,7 +35,10 @@ jobs:
           args: -p update_version
       - name: Determine new version
         run: |
-          echo "NEXT_VERSION=$(./convco version --bump HEAD)" >> $GITHUB_ENV
+          CURRENT_VERSION=$(./convco version)
+          echo current version is ${CURRENT_VERSION}
+          NEXT_VERSION=$(./convco version --bump HEAD) 
+          echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
           echo New version is ${NEXT_VERSION}
       - name: update Cargo.toml
         uses: actions-rs/cargo@v1
