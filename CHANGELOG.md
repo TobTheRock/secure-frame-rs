@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.1.1](https://github.com/TobTheRock/secure-frame-rs/compare/v0.1.0...v0.1.1) - 2023-04-14
+
+### Added
+- release action
+
+### Other
+- fix clippy
+- nonce tests
+- use generic traits for API
+- pass slices by reference to extend
+- reusable, internal buffer in sender/receiver
+- Merge branch 'main' into feature/enforce-clippy
+- Merge branch 'main' into feature/enforce-clippy
+- allow manual runs
+- fixed clippy warnings
+- enforce clippy
+- calculate min bytes needed without div_ceil
+- improved nonce creation
+- added benches for AesGcm128Sha256
+- fix typo in doc
+- fancy badges
+- don't install libdbus
+
 ## v0.1.0 (2022-12-16)
 
 ### Features
