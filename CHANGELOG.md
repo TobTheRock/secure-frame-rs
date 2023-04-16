@@ -1,5 +1,23 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+## [0.1.1] - 2023-04-16
+
+### Features
+
+- Release action
+
+
+### Performance
+
+- Reusable, internal buffer in sender/receiver
+
+- Improved nonce creation
+
+
+# Changelog
+
 ## v0.1.0 (2022-12-16)
 
 ### Features
