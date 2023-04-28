@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] - 2023-04-16
+
+### Performance
+
+- [**breaking**] Reusable, internal buffer in sender/receiver
+decrypt requires receiver to be mutable.
+
+The user is now responsible of copying data on subsequential encrypt/decrypt calls. E.g.
+```rust
+        let frame = sender
+            .encrypt(&data, 0)?;
+        let frame2 = sender
+            .encrypt(&data2, 0)?;
+// could be replaced with
+        let frame = sender
+            .encrypt(&data, 0)?
+            .to_vec();
+        let frame2 = sender
+            .encrypt(&data2, 0)?;
+```
+- Improved nonce creation
+
 ## [0.1.0] - 2022-12-16
 
 ### Features
