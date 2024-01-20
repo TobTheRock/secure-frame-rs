@@ -123,6 +123,13 @@ impl Sender {
         )?);
         Ok(())
     }
+
+    pub fn set_key_id<K>(&mut self, key_id: K)
+    where
+        K: Into<KeyId>,
+    {
+        self.key_id = key_id.into();
+    }
 }
 
 impl From<SenderOptions> for Sender {
